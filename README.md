@@ -8,7 +8,7 @@ A fully-featured PyQt6 desktop trainer for the **SHADA** (Self-supervised · Hie
 
 ```
 application/
-├── main_enhanced.py              ← Entry point (v3.1)
+├── main_enhanced.py              ← Entry point (v1.0.0-beta)
 ├── requirements.txt               ← Python dependencies
 ├── README.md
 ├── ui/

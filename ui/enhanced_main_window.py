@@ -203,7 +203,7 @@ class EnhancedMainWindow(QMainWindow):
 
         # Status Bar
         sb = QStatusBar()
-        self._sb_version = QLabel("   AxoLexis v3.1 Premium Edition")
+        self._sb_version = QLabel("   AxoLexis v1.0.0-beta")
         self._sb_time = QLabel("")
         sb.addWidget(self._sb_version)
         sb.addPermanentWidget(self._sb_time)
@@ -243,7 +243,7 @@ class EnhancedMainWindow(QMainWindow):
         title.setObjectName("welcomeHeader")
         title.setAlignment(Qt.AlignmentFlag.AlignCenter)
         
-        sub = QLabel("Professional SHAHAD AI training environment redesigned for precision and clarity.")
+        sub = QLabel("Professional SHADA AI training environment redesigned for precision and clarity.")
         sub.setObjectName("welcomeSub")
         sub.setAlignment(Qt.AlignmentFlag.AlignCenter)
         sub.setWordWrap(True)

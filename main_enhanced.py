@@ -77,7 +77,7 @@ def main():
     
     # Set application metadata
     app.setApplicationName("AxoLexis")
-    app.setApplicationVersion("3.1")
+    app.setApplicationVersion("1.0.0-beta")
     app.setOrganizationName("AxoLexis Labs")
     
     # Initialize theme manager
