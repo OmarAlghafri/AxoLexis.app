@@ -1,6 +1,6 @@
-# AxoLexis — SHAHAD Model Training Desktop Application
+# AxoLexis — SHADA Model Training Desktop Application
 
-A fully-featured PyQt6 desktop trainer for the **SHAHAD** (Self-supervised Hierarchical Adaptive Hybrid Algorithm for Deep Learning) model, featuring real-time loss/accuracy plots, multi-phase training control, intelligent model selection, and comprehensive quality validation.
+A fully-featured PyQt6 desktop trainer for the **SHADA** (Self-supervised · Hierarchical · Adaptive · Deep · Algorithm) model, featuring real-time loss/accuracy plots, multi-phase training control, intelligent model selection, and comprehensive quality validation.
 
 ---
 
@@ -30,7 +30,7 @@ application/
 ├── training/
 │   └── trainer_thread.py         ← QThread training worker
 ├── models/
-│   ├── model_factory.py          ← Builds SHAHAD model from config
+│   ├── model_factory.py          ← Builds SHADA model from config
 │   ├── enhanced_model_registry.py ← Enhanced model registry
 │   ├── model_download_manager.py  ← Model download & caching
 │   └── smart_config.py            ← Smart configuration
@@ -134,7 +134,7 @@ The executable will be at:
 application/dist/AxoLexis_Trainer.exe
 ```
 
-> **Note:** The `.exe` packages only the *launcher*. The SHAHAD model code and its dependencies (PyTorch, NumPy, etc.) must still be present in the environment.
+> **Note:** The `.exe` packages only the *launcher*. The SHADA model code and its dependencies (PyTorch, NumPy, etc.) must still be present in the environment.
 
 ---
 
@@ -156,7 +156,7 @@ application/dist/AxoLexis_Trainer.exe
 |---------|---------|
 | `PyQt6` | Desktop UI framework |
 | `pyqtgraph` | Real-time GPU-accelerated plots |
-| `torch` | Model training (SHAHAD) |
+| `torch` | Model training (SHADA) |
 | `numpy` | Numerical data loading |
 | `Pillow` | Image loading |
 | `pyinstaller` | `.exe` packaging (optional) |
