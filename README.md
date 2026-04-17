@@ -73,7 +73,7 @@ python main_enhanced.py
 
 ---
 
-## New Features (v3.1)
+## New Features (v1.0.0-beta)
 
 ### Intelligent Training System
 - **AI Model Selection**: Automatically selects optimal model based on data characteristics
