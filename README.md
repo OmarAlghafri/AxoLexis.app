@@ -1,37 +1,52 @@
 # AxoLexis — SHAHAD Model Training Desktop Application
 
-A fully-featured PyQt6 desktop trainer for the **SHAHAD** (Self-supervised Hierarchical Adaptive Hybrid Algorithm for Deep Learning) model, featuring real-time loss/accuracy plots, multi-phase training control, and model saving.
+A fully-featured PyQt6 desktop trainer for the **SHAHAD** (Self-supervised Hierarchical Adaptive Hybrid Algorithm for Deep Learning) model, featuring real-time loss/accuracy plots, multi-phase training control, intelligent model selection, and comprehensive quality validation.
 
 ---
 
-##  Project Structure
+## Project Structure
 
 ```
 application/
-├── main.py                      ← Entry point
-├── requirements.txt             ← Python dependencies
+├── main_enhanced.py              ← Entry point (v3.1)
+├── requirements.txt               ← Python dependencies
 ├── README.md
 ├── ui/
-│   ├── style.qss               ← Dark theme stylesheet
-│   ├── main_window.py          ← Main window shell
-│   ├── data_panel.py           ← Data file selection
-│   ├── model_panel.py          ← Model tier + hyper-parameters
-│   ├── training_panel.py       ← Start/Stop/Save controls
-│   ├── plots_panel.py          ← Real-time pyqtgraph charts
-│   └── log_panel.py            ← Coloured console output
+│   ├── enhanced_main_window.py  ← Main window with intelligent features
+│   ├── enhanced_model_panel.py  ← Enhanced model configuration
+│   ├── theme_manager.py          ← Theme system (light/dark/premium)
+│   ├── training_goal_dialog.py   ← Training goals configuration
+│   ├── style.qss                  ← Dark theme stylesheet
+│   ├── style_light.py             ← Light theme
+│   ├── style_dark.py              ← Dark theme
+│   ├── style_premium.py           ← Premium theme
+│   ├── main_window.py             ← Legacy main window
+│   ├── data_panel.py             ← Data file selection
+│   ├── model_panel.py            ← Model tier + hyper-parameters
+│   ├── training_panel.py         ← Start/Stop/Save controls
+│   ├── plots_panel.py             ← Real-time pyqtgraph charts
+│   ├── evaluation_panel.py       ← Model evaluation & metrics
+│   └── log_panel.py              ← Coloured console output
 ├── training/
-│   └── trainer_thread.py       ← QThread training worker
+│   └── trainer_thread.py         ← QThread training worker
 ├── models/
-│   └── model_factory.py        ← Builds SHAHAD model from config
+│   ├── model_factory.py          ← Builds SHAHAD model from config
+│   ├── enhanced_model_registry.py ← Enhanced model registry
+│   ├── model_download_manager.py  ← Model download & caching
+│   └── smart_config.py            ← Smart configuration
+├── intelligent_training_integration.py  ← Intelligent training system
+├── intelligent_model_selector.py         ← AI model selector
+├── intelligent_quality_checker.py        ← Data quality validation
+├── axolexis_automl_integration.py        ← AutoML integration
+├── training_transparency_logger.py      ← Training transparency
+├── runtime_validator.py                  ← Runtime validation
 └── data/
     └── data_loader.py          ← CSV / Image / NumPy / Synthetic loaders
 ```
 
-> **Training logic** is imported directly from `../Algorithem/Trainig code.py` — no code is duplicated.
-
 ---
 
-##  Quick Start
+## Quick Start
 
 ### 1. Install dependencies
 
@@ -51,27 +66,51 @@ pip install -r requirements.txt
 
 ```powershell
 cd "f:\my projects\AxoLexis\application"
-python main.py
+python main_enhanced.py
 ```
+
+> **Note:** On first run, the application will create a virtual environment (`venv/`) and install dependencies automatically.
 
 ---
 
-##  Using the Application
+## New Features (v3.1)
+
+### Intelligent Training System
+- **AI Model Selection**: Automatically selects optimal model based on data characteristics
+- **Quality Validation**: Comprehensive data quality checking before training
+- **AutoML Integration**: Automated hyperparameter optimization
+- **Training Transparency**: Full logging and tracking of training progress
+
+### Enhanced UI
+- **Theme System**: Light, Dark, and Premium themes
+- **Training Goals**: Set and track training objectives
+- **Model Evaluation**: Comprehensive evaluation metrics and visualization
+- **Enhanced Controls**: Improved training phase management
+
+### Validation & Quality
+- **Runtime Validator**: Validates system requirements before training
+- **Smart Configuration**: Intelligent parameter suggestions
+- **Model Download Manager**: Automatic model downloading and caching
+
+---
+
+## Using the Application
 
 | Panel | Description |
 |-------|-------------|
-| ** Data** | Browse for CSV / image folder / `.npy` file. Leave blank to use the built-in synthetic demo dataset |
-| ** Model & Hyper-Parameters** | Select model tier (`nano → xl`), task, optimizer, epochs, batch size, LR, LoRA rank, etc. |
-| ** Training Controls** | Choose a training phase (`pretrain`, `mtl`, `finetune`, `deploy`, `full_pipeline`), then click ** Start Training** |
-| ** Training Charts** | Live updates per training step — train loss, val loss, val accuracy, LR, gradient norm |
-| ** Console Log** | Colour-coded per-step log output |
+| **Data** | Browse for CSV / image folder / `.npy` file. Leave blank to use the built-in synthetic demo dataset |
+| **Model & Hyper-Parameters** | Select model tier (`nano → xl`), task, optimizer, epochs, batch size, LR, LoRA rank, etc. |
+| **Training Controls** | Choose a training phase (`pretrain`, `mtl`, `finetune`, `deploy`, `full_pipeline`), then click **Start Training** |
+| **Training Charts** | Live updates per training step — train loss, val loss, val accuracy, LR, gradient norm |
+| **Evaluation** | Comprehensive model evaluation with multiple metrics |
+| **Console Log** | Colour-coded per-step log output |
 
 ### Saving a model
-Click ** Save Model…** after training completes to export a `.pt` checkpoint to any location.
+Click **Save Model…** after training completes to export a `.pt` checkpoint to any location.
 
 ---
 
-##  Build a Windows .exe (optional)
+## Build a Windows .exe (optional)
 
 ### Install PyInstaller
 ```powershell
@@ -83,8 +122,11 @@ pip install pyinstaller
 cd "f:\my projects\AxoLexis\application"
 pyinstaller --noconfirm --onefile --windowed `
   --add-data "ui/style.qss;ui" `
+  --add-data "ui/style_light.py;ui" `
+  --add-data "ui/style_dark.py;ui" `
+  --add-data "ui/style_premium.py;ui" `
   --name "AxoLexis_Trainer" `
-  main.py
+  main_enhanced.py
 ```
 
 The executable will be at:
@@ -92,11 +134,11 @@ The executable will be at:
 application/dist/AxoLexis_Trainer.exe
 ```
 
-> **Note:** The `.exe` packages only the *launcher*. The SHAHAD model code (`Algorithem/Trainig code.py`) and its dependencies (PyTorch, NumPy, etc.) must still be present in the environment. For a fully standalone `.exe`, add `--add-data "../Algorithem;Algorithem"` and ensure all heavy dependencies are included with `--collect-all torch`.
+> **Note:** The `.exe` packages only the *launcher*. The SHAHAD model code and its dependencies (PyTorch, NumPy, etc.) must still be present in the environment.
 
 ---
 
-##  Supported Data Formats
+## Supported Data Formats
 
 | Format | How to Select |
 |--------|--------------|
@@ -108,7 +150,7 @@ application/dist/AxoLexis_Trainer.exe
 
 ---
 
-##  Dependencies
+## Dependencies
 
 | Package | Purpose |
 |---------|---------|
@@ -121,8 +163,9 @@ application/dist/AxoLexis_Trainer.exe
 
 ---
 
-##  Notes
+## Notes
 
 - On **CPU**, use `Mixed Precision: fp32` (bf16/fp16 require CUDA).
 - Training runs in a **background QThread** — the UI stays fully responsive.
 - Model tier `nano` is recommended for testing; `base`/`large`/`xl` require more VRAM.
+- The intelligent training system will automatically validate your data before training.
