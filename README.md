@@ -8,9 +8,12 @@ A fully-featured PyQt6 desktop trainer for the **SHADA** (Self-supervised · Hie
 
 ```
 application/
-├── main_enhanced.py              ← Entry point (v1.0.0-beta)
+├── main_enhanced.py              ← Core Application (v1.0.0-beta)
+├── AxoLexis.py                   ← Application Launcher
 ├── requirements.txt               ← Python dependencies
 ├── README.md
+├── app_icon.ico                  ← Application icon
+├── version.txt                   ← Version information
 ├── ui/
 │   ├── enhanced_main_window.py  ← Main window with intelligent features
 │   ├── enhanced_model_panel.py  ← Enhanced model configuration
@@ -37,11 +40,12 @@ application/
 ├── intelligent_training_integration.py  ← Intelligent training system
 ├── intelligent_model_selector.py         ← AI model selector
 ├── intelligent_quality_checker.py        ← Data quality validation
-├── axolexis_automl_integration.py        ← AutoML integration
+├── auto_pipeline.py                      ← AutoML pipeline logic
 ├── training_transparency_logger.py      ← Training transparency
 ├── runtime_validator.py                  ← Runtime validation
+├── setup_updater.py                     ← GUI setup tool
 └── data/
-    └── data_loader.py          ← CSV / Image / NumPy / Synthetic loaders
+    └── data_loader.py          ← Data loading utilities
 ```
 
 ---
@@ -66,10 +70,10 @@ pip install -r requirements.txt
 
 ```powershell
 cd "f:\my projects\AxoLexis\application"
-python main_enhanced.py
+python AxoLexis.py
 ```
 
-> **Note:** On first run, the application will create a virtual environment (`venv/`) and install dependencies automatically.
+> **Note:** The application includes a self-bootstrapping launcher (`AxoLexis.py`) that will automatically create a virtual environment (`venv/`) and install all required dependencies on the first run.
 
 ---
 
